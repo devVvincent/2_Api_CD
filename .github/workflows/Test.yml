@@ -31,7 +31,7 @@ jobs:
       - uses: ./.github/actions/dotnet-setup
 
       - name: "Tests"
-        run: dotnet test --no-restore --verbosity normal --results-directory ./TestResults
+        run: dotnet test --no-restore --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory ./TestResults
       
       - name: Convert TRX to JUnit
         uses: dorny/test-reporter@v1
