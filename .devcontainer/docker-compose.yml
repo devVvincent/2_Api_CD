@@ -1,0 +1,14 @@
+services:
+  myapi:
+    build:
+      context: ..        # le parent de .devcontainer, donc le projet complet
+      dockerfile: .devcontainer/Dockerfile
+    command: tail -f /dev/null   # garde le conteneur vivant
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000 
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace

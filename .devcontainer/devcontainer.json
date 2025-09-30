@@ -1,0 +1,18 @@
+{
+  // Lance l'image du DockerFile configurer
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "myapi",
+  "workspaceFolder": "/workspace",
+
+  // Ajoute les extensions de base à vsCode pour faire tourner C# dans le conteneur
+  "customizations": {
+    "vscode" : {
+      "extensions" : [
+          "ms-dotnettools.csdevkit"
+      ]
+    },
+    "settings" : {
+      "terminal.integrated.defaultProfile.linux" : "bash"
+    }
+  }
+}

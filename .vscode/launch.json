@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run MyApi",
+      "type": "coreclr",                                                // Débogueur pour .NET Core/8 directement sur la DLL.
+      "request": "launch",
+      "preLaunchTask": "build",                                         // Compile le projet avant de lancer, pour éviter les erreurs si tu modifies du code.
+      "program": "${workspaceFolder}/MyApi/bin/Debug/net8.0/MyApi.dll", // Le chemin vers le fichier DLL généré par le build (MyApi.dll).
+      "cwd": "${workspaceFolder}/MyApi",                                // Répertoire courant, ici le dossier du projet.
+
+       // Mappe /workspace vers workspace local pour que le débogueur fonctionne correctement.
+      "sourceFileMap": {
+        "/workspace/MyApi": "${workspaceFolder}/MyApi"                           
+      }
+    }
+  ]
+}
