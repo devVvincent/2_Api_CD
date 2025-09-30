@@ -22,9 +22,9 @@ jobs:
         run: dotnet format --verify-no-changes
 
   test:
+    needs: format
     name: "Run Tests"
     runs-on: ubuntu-latest
-    depends-on: format
     
     steps:
       - uses: actions/checkout@v4
