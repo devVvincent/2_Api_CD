@@ -1,13 +1,16 @@
 name: SonarQube
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["Format, Build & Test"]   
+    types:
+      - completed
 
 jobs:
   build:
     name: Build and analyze
     runs-on: windows-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == github.sha }}
     steps:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -46,6 +49,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"devVvincent_2_Api_CD" /o:"devvvincent" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          cd MyApi
+          $scanner = "${{ runner.temp }}\scanner"
+          $scanner\dotnet-sonarscanner begin /k:"devVvincent_2_Api_CD" /o:"devvvincent" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           dotnet build
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          $scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
