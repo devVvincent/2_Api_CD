@@ -4,7 +4,9 @@ Ce document décrit le processus de déploiement continu pour le projet 2_API_CD
 
 ## 1. Workflow GitHub Actions – CD
 
-Le workflow CD est déclenché après la réussite du workflow CI de tests via un workflow_run. Il effectue les étapes suivantes :
+Le workflow CD est déclenché après la réussite du workflow CI de tests via un workflow_run. 
+
+Il effectue les étapes suivantes :
 Récupération du code
 Le workflow récupère la version du code issue de la PR ou de la branche main.
 Connexion à GitHub Container Registry (GHCR)
