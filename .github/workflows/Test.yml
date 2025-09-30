@@ -1,0 +1,44 @@
+name: "Format, Build & Test"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  format:
+    name: "Code Format Check"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/dotnet-setup
+
+      - name: "Code format check"
+        run: dotnet format --verify-no-changes
+
+  test:
+    needs: format
+    name: "Run Tests"
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/dotnet-setup
+
+      - name: "Tests"
+        run: dotnet test --no-restore --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory ./TestResults
+      
+      - name: Convert TRX to JUnit
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: .NET Tests
+          path: ./TestResults/*.trx
+          reporter: dotnet-trx
+    
+    
