@@ -1,4 +1,4 @@
-On part du projet précedent (0_API_DevContainer) et on y rajoute :
+On part du projet précedent (1_Api_CI) et on y rajoute :
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devVvincent_2_Api_CD&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=devVvincent_2_Api_CD)
 
