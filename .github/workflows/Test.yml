@@ -74,7 +74,8 @@ jobs:
         shell: powershell
         run: |
           cd MyApi
-          $scanner = "${{ runner.temp }}\scanner"
-          $scanner\dotnet-sonarscanner begin /k:"devVvincent_2_Api_CD" /o:"devvvincent" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          $env:PATH = "${{ runner.temp }}\scanner;" + $env:PATH
+          dotnet-sonarscanner begin /k:"devVvincent_2_Api_CD" /o:"devvvincent" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           dotnet build
-          $scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
