@@ -38,7 +38,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/", () =>
 {
-    return "Hello World!";
+    return "Hello World! What a beautiful day to build an API!";
 })
 .WithOpenApi();
 
