@@ -27,7 +27,7 @@ Multistage build :
 - Runtime Stage avec mcr.microsoft.com/dotnet/aspnet:8.0
 - Copie uniquement les fichiers nécessaires pour garder l’image propre et légère.
 
-3. AWS EC2 et déploiement automatique
+## 3. AWS EC2 et déploiement automatique
 
 L’application est déployée sur une instance EC2 Ubuntu t3.micro et exposée sur le port 5000.
 
