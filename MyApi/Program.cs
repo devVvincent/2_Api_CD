@@ -42,6 +42,12 @@ app.MapGet("/", () =>
 })
 .WithOpenApi();
 
+app.MapGet("/LastPush", () =>
+{
+    return "Last push was on 2025-06-10";
+})
+.WithOpenApi();
+
 
 app.Run();
 
