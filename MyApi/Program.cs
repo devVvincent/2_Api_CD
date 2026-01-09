@@ -8,7 +8,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -37,6 +37,12 @@ app.MapGet("/weatherforecast", () =>
 .WithOpenApi();
 
 app.MapGet("/", () =>
+{
+    return "Hello World! What a beautiful day to build an API!";
+})
+.WithOpenApi();
+
+app.MapPost("/", () =>
 {
     return "Hello World! What a beautiful day to build an API!";
 })
